@@ -10,6 +10,7 @@ public class Launcher {
 		Launcher.mFrame = new JFrame("GUI generator");
 		Launcher.mFrame.setMinimumSize (new Dimension (400, 400));
 		Launcher.mFrame.setVisible(true);
+		metaTable mTable = new metaTable();
 	}
 	
 	public static JFrame getFrame() {
