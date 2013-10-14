@@ -24,19 +24,24 @@ public class metaTable {
 	String colons ="Kolonner";
 	String filler = "Utfylling";
 	String anchor = "Forankring";
+	int y;
+	JFrame metaTableFrame;
+	GridBagConstraints gbc;
+	Border blackline;
 	
 	public metaTable() {
-		// TODO Auto-generated constructor stub
+		y = 0;
 		System.out.println("Lager metaTable");
-		JFrame metaTableFrame = Launcher.getFrame();	//Gets main window
-		metaTableFrame.setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
 		
-		Border blackline = BorderFactory.createLineBorder(Color.black);
+		metaTableFrame = Launcher.getFrame();	//Gets main window
+		metaTableFrame.setLayout(new GridBagLayout());
+		gbc = new GridBagConstraints();
+		
+		blackline = BorderFactory.createLineBorder(Color.black);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JLabel jt = new JLabel(Type);
 		gbc.gridx = 0;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		gbc.ipadx = 40;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
@@ -44,109 +49,120 @@ public class metaTable {
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(variableName);
 		gbc.gridx = 1;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(text);
 		gbc.gridx = 2;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(row);
 		gbc.gridx = 3;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(colon);
 		gbc.gridx = 4;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(rows);
 		gbc.gridx = 5;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(colons);
 		gbc.gridx = 6;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(filler);
 		gbc.gridx = 7;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(anchor);
 		gbc.gridx = 8;
-		gbc.gridy = 0;
+		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
+		makeRow();
+		makeRow();
+		makeRow();
+	}
+	
+	public void makeRow() 
+	{
+		y++;
+		gbc.ipady = 5;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		String[] choices = {"JButton", "JLabel", "JTextfield", "JTextArea"};
 		JComboBox varType = new JComboBox(choices);
 		gbc.gridx = 0;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varType.setBorder(blackline);
 		metaTableFrame.add(varType, gbc);
 		
+		gbc.ipady = 13;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varName = new JTextField(variableName);	//Skal endres til ny0 og ny1
 		gbc.gridx = 1;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varName.setBorder(blackline);
 		metaTableFrame.add(varName, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varText = new JTextField();	//Skal endres til ny0 og ny1
 		gbc.gridx = 2;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varText.setBorder(blackline);
 		metaTableFrame.add(varText, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varRow = new JTextField("1");	//Skal endres til ny0 og ny1
 		gbc.gridx = 3;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varRow.setBorder(blackline);
 		metaTableFrame.add(varRow, gbc);
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varColon = new JTextField("1");	//Skal endres til ny0 og ny1
 		gbc.gridx = 4;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varColon.setBorder(blackline);
 		metaTableFrame.add(varColon, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varRows = new JTextField("1");	//Skal endres til ny0 og ny1
 		gbc.gridx = 5;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varRows.setBorder(blackline);
 		metaTableFrame.add(varRows, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varColons= new JTextField("1");	//Skal endres til ny0 og ny1
 		gbc.gridx = 6;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varColons.setBorder(blackline);
 		metaTableFrame.add(varColons, gbc);
 		
+		gbc.ipady = 0;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		ImageIcon[] choicesFill = {
 				new ImageIcon("images/skaler_begge.png"),
@@ -156,8 +172,8 @@ public class metaTable {
 						};
 		JComboBox varFill = new JComboBox(choicesFill);
 		gbc.gridx = 7;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varFill.setBorder(blackline);
 		metaTableFrame.add(varFill, gbc);
 		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -174,13 +190,11 @@ public class metaTable {
 				};
 		JComboBox varAnchor = new JComboBox(choicesAnchor);
 		gbc.gridx = 8;
-		gbc.gridy = 1;
-		jt.setBorder(blackline);
+		gbc.gridy = y;
+		varAnchor.setBorder(blackline);
 		metaTableFrame.add(varAnchor, gbc);
-		
-		
-	}
 
+	}
 }
 
 
