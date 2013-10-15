@@ -1,21 +1,20 @@
 package com.theforce.programutviklingsepisodeIV;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.table.AbstractTableModel;
 
-public class metaTable extends AbstractTableModel{
+public class RowEditor {
 
 	//Internasjonalisering yo
 	String Type = "Type";
@@ -27,92 +26,85 @@ public class metaTable extends AbstractTableModel{
 	String colons ="Kolonner";
 	String filler = "Utfylling";
 	String anchor = "Forankring";
-	int y;
-	JFrame metaTableFrame;
+	int y = 0;
+	
+	final JTable table = new JTable(new Editor());
+	JScrollPane scrollPane = new JScrollPane(table);
+	JFrame metaTableFrame = Launcher.getFrame();
+
 	GridBagConstraints gbc;
+	
+	
 	Border blackline;
 	
-	public metaTable() {
-		y = 0;
+	public RowEditor() {
 		System.out.println("Lager metaTable");
 		
 		metaTableFrame = Launcher.getFrame();	//Gets main window
 		metaTableFrame.setLayout(new GridBagLayout());
 		gbc = new GridBagConstraints();
-		
+		metaTableFrame.	add(scrollPane);
 		blackline = BorderFactory.createLineBorder(Color.black);
+		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JLabel jt = new JLabel(Type);
 		gbc.gridx = 0;
-		gbc.gridy = y;
+		gbc.gridy = 0;
 		gbc.ipadx = 40;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(variableName);
 		gbc.gridx = 1;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(text);
 		gbc.gridx = 2;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(row);
 		gbc.gridx = 3;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(colon);
 		gbc.gridx = 4;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(rows);
 		gbc.gridx = 5;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(colons);
 		gbc.gridx = 6;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(filler);
 		gbc.gridx = 7;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		jt = new JLabel(anchor);
 		gbc.gridx = 8;
-		gbc.gridy = y;
 		jt.setBorder(blackline);
 		metaTableFrame.add(jt, gbc);
-		
 		makeRow();
-		makeRow();
-		makeRow();
-		getDataFromRow();
 	}
-	
+	public void insertRow() 
+	{
+		
+	}
 	public void makeRow() 
 	{
+		/*
+		 * Midlertidig kode for adding av rader.
+		 * Fungerer ikke bra, og legges ikke til i en Vector
+		 */
 		y++;
 		gbc.ipady = 5;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -122,22 +114,22 @@ public class metaTable extends AbstractTableModel{
 		gbc.gridy = y;
 		varType.setBorder(blackline);
 		metaTableFrame.add(varType, gbc);
-		
+
 		gbc.ipady = 13;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		JTextField varName = new JTextField(variableName + y);	//Skal endres til ny0 og ny1
+		JTextField varName = new JTextField(variableName);	//Skal endres til ny0 og ny1
 		gbc.gridx = 1;
 		gbc.gridy = y;
 		varName.setBorder(blackline);
 		metaTableFrame.add(varName, gbc);
-		
+
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varText = new JTextField();	//Skal endres til ny0 og ny1
 		gbc.gridx = 2;
 		gbc.gridy = y;
 		varText.setBorder(blackline);
 		metaTableFrame.add(varText, gbc);
-		
+
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varRow = new JTextField("1");	//Skal endres til ny0 og ny1
 		gbc.gridx = 3;
@@ -151,21 +143,21 @@ public class metaTable extends AbstractTableModel{
 		gbc.gridy = y;
 		varColon.setBorder(blackline);
 		metaTableFrame.add(varColon, gbc);
-		
+
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varRows = new JTextField("1");	//Skal endres til ny0 og ny1
 		gbc.gridx = 5;
 		gbc.gridy = y;
 		varRows.setBorder(blackline);
 		metaTableFrame.add(varRows, gbc);
-		
+
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		JTextField varColons= new JTextField("1");	//Skal endres til ny0 og ny1
 		gbc.gridx = 6;
 		gbc.gridy = y;
 		varColons.setBorder(blackline);
 		metaTableFrame.add(varColons, gbc);
-		
+
 		gbc.ipady = 0;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		ImageIcon[] choicesFill = {
@@ -179,7 +171,7 @@ public class metaTable extends AbstractTableModel{
 		gbc.gridy = y;
 		varFill.setBorder(blackline);
 		metaTableFrame.add(varFill, gbc);
-		
+
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		ImageIcon[] choicesAnchor = {
 				new ImageIcon("images/anchor_center.png"), 
@@ -206,29 +198,6 @@ public class metaTable extends AbstractTableModel{
 		
 		//else if(upButtonPressed)
 		
-	}
-	
-	public void getDataFromRow() 
-	{
-		fireTableRowsInserted(1,1);
-	}
-	
-
-	@Override
-	public int getColumnCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Object getValueAt(int arg0, int arg1) {
-		return null;
 	}
 }
 

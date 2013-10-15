@@ -11,10 +11,8 @@ public class Launcher {
 		Launcher.mFrame = new JFrame("GUI generator");
 		mFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Launcher.mFrame.setMinimumSize (new Dimension (800, 800));
-		metaTable metatbl = new metaTable();
+		RowEditor rowEditor = new RowEditor();
 		Launcher.mFrame.setVisible(true);
-
-
 	}
 	
 	public static JFrame getFrame() {
