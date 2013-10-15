@@ -1,8 +1,10 @@
 package com.theforce.programutviklingsepisodeIV;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.LayoutManager;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -11,12 +13,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.table.AbstractTableModel;
 
-public class metaTable {
+public class metaTable extends AbstractTableModel{
 
 	//Internasjonalisering yo
 	String Type = "Type";
-	String variableName = "Variabelnavn";
+	String variableName = "ny";
 	String text = "Tekst";
 	String row = "Rad";
 	String colon = "Kolonne";
@@ -105,6 +108,7 @@ public class metaTable {
 		makeRow();
 		makeRow();
 		makeRow();
+		getDataFromRow();
 	}
 	
 	public void makeRow() 
@@ -121,7 +125,7 @@ public class metaTable {
 		
 		gbc.ipady = 13;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		JTextField varName = new JTextField(variableName);	//Skal endres til ny0 og ny1
+		JTextField varName = new JTextField(variableName + y);	//Skal endres til ny0 og ny1
 		gbc.gridx = 1;
 		gbc.gridy = y;
 		varName.setBorder(blackline);
@@ -194,6 +198,37 @@ public class metaTable {
 		varAnchor.setBorder(blackline);
 		metaTableFrame.add(varAnchor, gbc);
 
+	}
+	
+	public void moveRowUpOrDown() 
+	{
+		//if(downButtonPressed)
+		
+		//else if(upButtonPressed)
+		
+	}
+	
+	public void getDataFromRow() 
+	{
+		fireTableRowsInserted(1,1);
+	}
+	
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getValueAt(int arg0, int arg1) {
+		return null;
 	}
 }
 
