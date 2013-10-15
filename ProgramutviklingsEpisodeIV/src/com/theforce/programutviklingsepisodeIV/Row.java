@@ -60,12 +60,13 @@ public class Row {
 	int getColons(){
 		return colons;
 	}
-	String getFiller(){
-		return filler;
-	}
 	String getAnchor(){
 		return anchor;
 	}
+	String getFiller(){
+		return filler;
+	}
+
 	
 	public Row() {
 		// TODO Auto-generated constructor stub
