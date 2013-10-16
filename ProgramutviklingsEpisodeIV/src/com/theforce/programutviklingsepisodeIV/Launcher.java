@@ -9,7 +9,7 @@ public class Launcher {
 	private static JFrame mFrame;
 	private static Menu mMenuBar;
 	private static Toolbar mToolBar;
-	private static metaTable mtable;
+	private static RowEditor mRowEditor;
 	public static void main(String[] args) {
 		// Create frame
 		Launcher.mFrame = new JFrame("GUI generator");
@@ -24,7 +24,7 @@ public class Launcher {
 		Launcher.mToolBar = new Toolbar(Launcher.mFrame);
 		
 		// Frame contents (table)
-		Launcher.mtable = new metaTable();
+		Launcher.mRowEditor = new RowEditor();
 		
 		// Update and make visible
 		Launcher.mFrame.setVisible(true);
