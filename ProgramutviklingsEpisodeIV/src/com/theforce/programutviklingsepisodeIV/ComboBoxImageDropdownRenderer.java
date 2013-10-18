@@ -15,6 +15,8 @@ import javax.swing.ListCellRenderer;
  * ComboBoxImageCellRenderer applies instead
  * 
  * @author John Hoegh-Omdal
+ * @author Jehans Storvik
+ * @author Hans Martin Bragen
  * @version 1.0
  */
 @SuppressWarnings("rawtypes")

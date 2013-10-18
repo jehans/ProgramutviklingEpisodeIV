@@ -9,11 +9,26 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.WindowConstants;
 
-public class Launcher {
+/**
+* Main entry point
+* Creates the frame, and its components, and serves as a hub throughout the application for
+* all the important references
+*
+* @author John Hoegh-Omdal
+* @author Jehans Storvik
+* @author Hans Martin Bragen
+* @version 1.0
+*/
+public abstract class Launcher {
 	private static JFrame mFrame;
 	private static JMenuBar mMenuBar;
 	private static JToolBar mToolBar;
 	private static TableManager mRowEditor;
+	
+	/**
+	* Main entry point. Acts as the application's constructor.
+	* Creates the frame, and its components
+	*/
 	public static void main(String[] args) {
 		// Create frame
 		Launcher.mFrame = new JFrame(Messages.getString("Launcher.frametitle")); //$NON-NLS-1$
@@ -46,11 +61,21 @@ public class Launcher {
 		Launcher.mFrame.setVisible(true);
 	}
 	
+	/**
+	* Simple get function that can be used globally everywhere to get the application's main frame
+	* 
+	* @return Returns the frame
+	*/
 	public static JFrame getFrame() {
 		return Launcher.mFrame;
 	}
 	
-	public static TableManager getRowEditor() {
+	/**
+	* Simple get function that can be used globally everywhere to get the application's table manager
+	* 
+	* @return Returns the tablemanager
+	*/
+	public static TableManager getTableManager() {
 		return Launcher.mRowEditor;
 	}
 }

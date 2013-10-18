@@ -8,13 +8,15 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 /**
- * A custom renderer for the table cell of a combobox showing an image
- * This only applies when the cell is unclicked. When the combobox has focus, 
- * ComboBoxImageDropDownRenderer applies instead
- * 
- * @author John Hoegh-Omdal
- * @version 1.0
- */
+* A custom renderer for the table cell of a combobox showing an image
+* This only applies when the cell is unclicked. When the combobox has focus, 
+* ComboBoxImageDropDownRenderer applies instead
+* 
+* @author John Hoegh-Omdal
+* @author Jehans Storvik
+* @author Hans Martin Bragen
+* @version 1.0
+*/
 public class ComboBoxImageCellRenderer extends JLabel implements TableCellRenderer {
 	private String type;
 	private static final long serialVersionUID = -6764260733521600688L;

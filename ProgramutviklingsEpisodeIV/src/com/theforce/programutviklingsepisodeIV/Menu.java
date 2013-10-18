@@ -9,7 +9,23 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+* Creates menu with commands on it.
+* The menu and its configurations are predefined and unmutable
+* 
+* @author John Hoegh-Omdal
+* @author Jehans Storvik
+* @author Hans Martin Bragen
+* @version 1.0
+*/
 public abstract class Menu {
+	/**
+	* Creates menu with commands on it.
+	* The menu and its configurations are predefined and unmutable
+	* Automatically attaches to frame
+	* 
+	* @return Returns the created menu
+	*/
 	public static JMenuBar createMenu() {
         JMenuBar menubar = new JMenuBar();
 
@@ -29,7 +45,7 @@ public abstract class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Call new method
-            	Launcher.getRowEditor().clear();
+            	Launcher.getTableManager().clear();
             }
         });
         file.add(item);        
@@ -41,7 +57,7 @@ public abstract class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Load file
-            	Launcher.getRowEditor().load();
+            	Launcher.getTableManager().load();
             }
         });
         file.add(item);
@@ -53,7 +69,7 @@ public abstract class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save to file
-            	Launcher.getRowEditor().save();
+            	Launcher.getTableManager().save();
             }
         });
         file.add(item);
@@ -65,7 +81,7 @@ public abstract class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save as to file
-            	Launcher.getRowEditor().saveAs();
+            	Launcher.getTableManager().saveAs();
             }
         });
         file.add(item);
@@ -80,7 +96,7 @@ public abstract class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Preview
-            	Launcher.getRowEditor().preview();
+            	Launcher.getTableManager().preview();
             }
         });
         file.add(item);
@@ -92,7 +108,7 @@ public abstract class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Export to file
-            	Launcher.getRowEditor().export();
+            	Launcher.getTableManager().export();
             }
         });
         file.add(item);
@@ -128,7 +144,7 @@ public abstract class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Call new row method
-            	Launcher.getRowEditor().insertRow();
+            	Launcher.getTableManager().insertRow();
             }
         });
         edit.add(item);

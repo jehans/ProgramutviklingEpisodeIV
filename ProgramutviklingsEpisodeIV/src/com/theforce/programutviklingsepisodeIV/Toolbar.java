@@ -8,7 +8,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
+/**
+ * A singleton class to add toolbar to main.
+ * The various buttons and so forth are predefined and unmutable
+ * 
+ * @author John Hoegh-Omdal
+ * @author Jehans Storvik
+ * @author Hans Martin Bragen
+ * @version 1.0
+ */
 public abstract class Toolbar {
+	/**
+	* Creates toolbar with buttons on it.
+	* The buttons and their configurations are predefined and unmutable
+	* Automatically attaches to frame
+	* 
+	* @return Returns the created toolbar
+	*/
 	public static JToolBar createToolbar() {
 		// Create toolbar
 		JToolBar toolbar = new JToolBar();
@@ -22,7 +38,7 @@ public abstract class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // New
-            	Launcher.getRowEditor().clear();
+            	Launcher.getTableManager().clear();
             }
         });
         toolbar.add(button);
@@ -33,7 +49,7 @@ public abstract class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Load
-            	Launcher.getRowEditor().load();
+            	Launcher.getTableManager().load();
             }
         });
         toolbar.add(button);
@@ -44,7 +60,7 @@ public abstract class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save
-            	Launcher.getRowEditor().save();
+            	Launcher.getTableManager().save();
             }
         });
         toolbar.add(button);
@@ -58,7 +74,7 @@ public abstract class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Preview
-            	Launcher.getRowEditor().preview();
+            	Launcher.getTableManager().preview();
             }
         });
         toolbar.add(button);
@@ -69,7 +85,7 @@ public abstract class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Export
-            	Launcher.getRowEditor().export();
+            	Launcher.getTableManager().export();
             }
         });
         toolbar.add(button);
@@ -82,7 +98,7 @@ public abstract class Toolbar {
         button.setToolTipText(Messages.getString("Menu.edit.newrow_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Launcher.getRowEditor().insertRow();
+                Launcher.getTableManager().insertRow();
             }
         });
         toolbar.add(button);
@@ -93,7 +109,7 @@ public abstract class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Move row up
-            	Launcher.getRowEditor().moveRowUp();
+            	Launcher.getTableManager().moveRowUp();
             }
         });
         toolbar.add(button);
@@ -104,7 +120,7 @@ public abstract class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Move row down
-            	Launcher.getRowEditor().moveRowDown();
+            	Launcher.getTableManager().moveRowDown();
             }
         });
         toolbar.add(button);

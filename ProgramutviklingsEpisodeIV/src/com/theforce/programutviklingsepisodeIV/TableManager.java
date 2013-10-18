@@ -13,6 +13,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
+/**
+* Main entry point
+* Creates the frame, and its components, and serves as a hub throughout the application for
+* all the important references
+*
+* @author John Hoegh-Omdal
+* @author Jehans Storvik
+* @author Hans Martin Bragen
+* @version 1.0
+*/
 public class TableManager {
 	JTable table;
 	RowModel data;
@@ -20,9 +30,13 @@ public class TableManager {
 	
 	JScrollPane scrollPane;
 	
+	/**
+	* Constructor class that creates the table manager and its contents
+	* 
+	*/
 	@SuppressWarnings("unchecked")
 	public TableManager() {
-		System.out.println("Lager metaTable"); //$NON-NLS-1$
+		System.out.println("Creating metatable"); //$NON-NLS-1$
 		
 		// Create table
 		this.data = new RowModel();
@@ -133,10 +147,16 @@ public class TableManager {
 		});
 	}
 	
+	/**
+	* Proxy function to create new row
+	*/
 	public void insertRow() {
 		this.data.insertRow(new Row("JButton", Messages.getString("TableActions.rownew_initname") + this.incrementValue++, "", 1, 1, 1, 1, "NONE", "CENTER")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 	}
 	
+	/**
+	* Proxy function to move a row down
+	*/
 	public void moveRowDown() {
 		int selectedRow = this.table.getSelectedRow();
 		if (selectedRow != -1) {
@@ -146,6 +166,9 @@ public class TableManager {
 		}
 	}
 	
+	/**
+	* Proxy function to move a row up
+	*/
 	public void moveRowUp() {
 		int selectedRow = this.table.getSelectedRow();
 		if (selectedRow != -1) {
@@ -155,26 +178,44 @@ public class TableManager {
 		}		
 	}
 	
+	/**
+	* Proxy function to clear the table
+	*/
 	public void clear() {
 		this.data.clear();
 	}
 	
+	/**
+	* Proxy function to save the table
+	*/
 	public void save() {
 		this.data.save(false);
 	}
 	
+	/**
+	* Proxy function to save the table, requiring custom path
+	*/
 	public void saveAs() {
 		this.data.save(true);
 	}
 	
+	/**
+	* Proxy function to load a table
+	*/	
 	public void load() {
 		this.data.load();
 	}
 	
+	/**
+	* Proxy function to preview an exported component table
+	*/
 	public void preview() {
 		this.data.preview();
 	}
 	
+	/**
+	* Proxy function to save-export the table to a .java file
+	*/
 	public void export() {
 		this.data.export();
 	}
