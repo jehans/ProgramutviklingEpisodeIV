@@ -7,20 +7,39 @@ import java.util.Map;
 import javax.swing.*;
 import javax.swing.table.*;
 
+/**
+ * A custom renderer for the table cell of a combobox showing an image
+ * This only applies when the cell is unclicked. When the combobox has focus, 
+ * ComboBoxImageDropDownRenderer applies instead
+ * 
+ * @author John Hoegh-Omdal
+ * @version 1.0
+ */
 public class ComboBoxImageCellRenderer extends JLabel implements TableCellRenderer {
 	private String type;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6764260733521600688L;
 
+	/**
+	 * Constructor that initializes the renderer
+	 * 
+	 * @param type Used to differentiate between fill and anchor combobox, in order to display right image(s)
+	 */
 	public ComboBoxImageCellRenderer(String type) {
 		this.type = type;
 		this.setOpaque(true);
 		this.setHorizontalAlignment(CENTER);
 		this.setVerticalAlignment(CENTER);
 	}
-
+	
+	/**
+	 * @param table Parent table for component cell
+	 * @param value Component value
+	 * @param isSelected Whether or not the cell is selected
+	 * @param hasFocus Whether or not the cell has focus
+	 * @param row which row the cell is in
+	 * @param column which column the cell is in
+	 * @return Returns the component for the cell
+	 */
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		if (isSelected) {
 			this.setBackground (table.getSelectionBackground ());
