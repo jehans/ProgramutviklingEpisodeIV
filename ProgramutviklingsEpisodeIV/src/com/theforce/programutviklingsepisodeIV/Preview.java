@@ -5,10 +5,28 @@ import java.util.Vector;
 
 import javax.swing.*;
 
-public abstract class Preview {	
+/**
+ * Generates a window with row components
+ * <p>
+ * Takes a vector with row components, and generates a new 
+ * window with the row components translatet into javacode
+ * 
+ * @author Hans Martin Bragen
+ * @author John Hoegh-Omdal
+ * @author Jehans Storvik
+ * @version 1.0
+ */
+
+
+public abstract class Preview {
+	/**
+	 * A class to generate preview
+	 */
 	public static class Generate extends JPanel{
 		private static final long serialVersionUID = 8462459154264088745L;
-
+		/**
+		 * @param data tablemanager data
+		 */
 		public Generate(Vector<Row> data) {
 
 			JLabel label = null;
@@ -109,6 +127,9 @@ public abstract class Preview {
 		}
 	}
 	
+	/**
+	 * Generates a frame with the UI components from the tablemanager, and displays this preview to the user
+	 */
 	public static void PreviewExport(Vector<Row> data) {
 		JFrame prev = new JFrame(Messages.getString("Preview.previewtitle")); //$NON-NLS-1$
 		prev.add(new Generate(data));

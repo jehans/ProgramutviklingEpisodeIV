@@ -9,10 +9,13 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 /**
-* @author Hans Martin Bragen
-* 
+* Generates javacode and writes it to file
 * <p>
-* Please use only the FileEksport(Vector<Row>) constructor to generate a class.java file :)
+* Takes a Vector with Row objects and transform them into javacode and wirtes it to a class file
+*
+* @author Hans Martin Bragen
+* @author John Hoegh-Omdal
+* @author Jehans Sotrvik
 */
 
 public abstract class FileExport {
@@ -50,7 +53,9 @@ public abstract class FileExport {
 			writer.print(out);
 		}
 	}
-
+	/**
+	 * Exports data to file
+	 */
 	public static void ExportToFile(Vector<Row> data) {
 		writer = null;
 		queue = new LinkedList<FillData>();
@@ -111,6 +116,12 @@ public abstract class FileExport {
 		}
 		closeFile();
 	}
+	/**
+	 * Only for internal use :)
+	 * <p>
+	 * Used to sett component parameters using the earlyer created stack
+	 * @return if file was open and got closed returns true; if not false
+	 */
 
 	private static boolean closeFile() {
 		if(writer == null) {
@@ -145,7 +156,10 @@ public abstract class FileExport {
 		writer.close();
 		return true;
 	}
-	
+	/**
+	 * @param row Takes a Row element and writes it's declaration to file and then adds 
+	 * it's parameters to the stack so they can be set when all declarations are done.
+	 */
 	private static void write(Row row) {
 		FillData buffer = null;
 		buffer = new FillData(row);
