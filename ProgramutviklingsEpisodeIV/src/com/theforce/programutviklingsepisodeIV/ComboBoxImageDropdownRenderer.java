@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+@SuppressWarnings("rawtypes")
 public class ComboBoxImageDropdownRenderer extends JLabel implements ListCellRenderer {
 	private String type;
 	/**
@@ -36,6 +37,7 @@ public class ComboBoxImageDropdownRenderer extends JLabel implements ListCellRen
 
 		setText ("");
 		if (this.type == "fill") {
+			@SuppressWarnings("serial")
 			Map<String, String> iconpaths = new HashMap<String, String>() {{
 				put("NONE", "skaler_ingen.png");
 				put("HORIZONTAL", "skaler_horisontalt.png");
@@ -46,6 +48,7 @@ public class ComboBoxImageDropdownRenderer extends JLabel implements ListCellRen
 		}
 		
 		else if (this.type == "anchor") {
+			@SuppressWarnings("serial")
 			Map<String, String> iconpaths = new HashMap<String, String>() {{
 				put("CENTER", "anchor_center.png");
 				put("NORTH", "anchor_north.png");

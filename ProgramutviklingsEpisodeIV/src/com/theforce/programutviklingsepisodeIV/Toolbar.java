@@ -6,11 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-public class Toolbar {
-	public Toolbar(JPanel panel) {
+public abstract class Toolbar {
+	public static JToolBar createToolbar() {
 		// Create toolbar
 		JToolBar toolbar = new JToolBar();
 		
@@ -23,6 +22,7 @@ public class Toolbar {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // New
+            	Launcher.getRowEditor().clear();
             }
         });
         toolbar.add(button);
@@ -123,5 +123,7 @@ public class Toolbar {
         toolbar.add(button);
 		
 		Launcher.getFrame().add(toolbar, BorderLayout.NORTH);
+		
+		return toolbar;
 	}
 }

@@ -2,18 +2,17 @@ package com.theforce.programutviklingsepisodeIV;
 
 import java.awt.Dimension;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JMenuBar;
+import javax.swing.JToolBar;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.WindowConstants;
 
 public class Launcher {
 	private static JFrame mFrame;
-	private static JPanel mPanel;
-	private static Menu mMenuBar;
-	private static Toolbar mToolBar;
+	private static JMenuBar mMenuBar;
+	private static JToolBar mToolBar;
 	private static TableManager mRowEditor;
 	public static void main(String[] args) {
 		// Create frame
@@ -31,14 +30,14 @@ public class Launcher {
 		        }
 		    }
 		} catch (Exception e) {
-		    //
+		    e.printStackTrace();
 		}
 		
 		// Menubar
-		Launcher.mMenuBar = new Menu(Launcher.mFrame);
+		Launcher.mMenuBar = Menu.createMenu();
 		
 		// Toolbar
-		Launcher.mToolBar = new Toolbar(Launcher.mPanel);
+		Launcher.mToolBar = Toolbar.createToolbar();
 		
 		// Frame contents (table)
 		Launcher.mRowEditor = new TableManager();
@@ -49,10 +48,6 @@ public class Launcher {
 	
 	public static JFrame getFrame() {
 		return Launcher.mFrame;
-	}
-	
-	public static JPanel getPanel() {
-		return Launcher.mPanel;
 	}
 	
 	public static TableManager getRowEditor() {

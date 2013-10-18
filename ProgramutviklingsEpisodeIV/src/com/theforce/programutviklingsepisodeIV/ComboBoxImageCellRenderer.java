@@ -30,6 +30,7 @@ public class ComboBoxImageCellRenderer extends JLabel implements TableCellRender
 
 		this.setText ("");
 		if (this.type == "fill") {
+			@SuppressWarnings("serial")
 			Map<String, String> iconpaths = new HashMap<String, String>() {{
 				put("NONE", "skaler_ingen.png");
 				put("HORIZONTAL", "skaler_horisontalt.png");
@@ -40,6 +41,7 @@ public class ComboBoxImageCellRenderer extends JLabel implements TableCellRender
 		}
 		
 		else if (this.type == "anchor") {
+			@SuppressWarnings("serial")
 			Map<String, String> iconpaths = new HashMap<String, String>() {{
 				put("CENTER", "anchor_center.png");
 				put("NORTH", "anchor_north.png");

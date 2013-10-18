@@ -12,10 +12,6 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.table.AbstractTableModel;
 
 public class RowModel extends AbstractTableModel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4052506375066105893L;
 	private Vector<Row> data = new Vector<Row>();
 	private String[] columnNames = {Messages.getString("RowModel.tableheader.type"), Messages.getString("RowModel.tableheader.variable_name"), Messages.getString("RowModel.tableheader.text"), Messages.getString("RowModel.tableheader.row"), Messages.getString("RowModel.tableheader.column"), Messages.getString("RowModel.tableheader.rows"), Messages.getString("RowModel.tableheader.columns"), Messages.getString("RowModel.tableheader.fill"), Messages.getString("RowModel.tableheader.anchor")}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$
@@ -62,6 +58,7 @@ public class RowModel extends AbstractTableModel {
 		return columnNames.length;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Class getColumnClass(int column) {
 		return this.getValueAt(0, column).getClass();
 	}
@@ -98,9 +95,9 @@ public class RowModel extends AbstractTableModel {
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home"))); //$NON-NLS-1$
 		fileChooser.setFileFilter(new FileFilter() {
             @Override
-            public boolean accept(File f) {
-                String fName = f.getName().toLowerCase();
-                if (fName.endsWith(".r2d2") || f.isDirectory()) { //$NON-NLS-1$
+            public boolean accept(File file) {
+                String fName = file.getName().toLowerCase();
+                if (fName.endsWith(".r2d2") || file.isDirectory()) { //$NON-NLS-1$
                     return true;
                 } else {
                     return false;   
@@ -124,7 +121,7 @@ public class RowModel extends AbstractTableModel {
 			this.data.clear();
 			Row buffer = null;
 			try	{
-				FileInputStream fileIn = new FileInputStream("save.hidden"); //$NON-NLS-1$
+				FileInputStream fileIn = new FileInputStream(path); //$NON-NLS-1$
 				ObjectInputStream in = new ObjectInputStream(fileIn);
 				do {
 					buffer = (Row)in.readObject();
@@ -148,9 +145,9 @@ public class RowModel extends AbstractTableModel {
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home"))); //$NON-NLS-1$
 		fileChooser.setFileFilter(new FileFilter() {
             @Override
-            public boolean accept(File f) {
-                String fName = f.getName().toLowerCase();
-                if (fName.endsWith(".r2d2") || f.isDirectory()) { //$NON-NLS-1$
+            public boolean accept(File file) {
+                String fName = file.getName().toLowerCase();
+                if (fName.endsWith(".r2d2") || file.isDirectory()) { //$NON-NLS-1$
                     return true;
                 } else {
                     return false;   
@@ -209,5 +206,11 @@ public class RowModel extends AbstractTableModel {
 
 	public void export() {
 		FileExport.ExportToFile(this.data);
+	}
+
+	public void clear() {
+		this.data.clear();
+		this.path = null;
+		this.fireTableDataChanged();
 	}
 }

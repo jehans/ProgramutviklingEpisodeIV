@@ -5,13 +5,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class Menu {
-	public Menu(JFrame frame) {
+public abstract class Menu {
+	public static JMenuBar createMenu() {
         JMenuBar menubar = new JMenuBar();
 
         // Item definition
@@ -30,6 +29,7 @@ public class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Call new method
+            	Launcher.getRowEditor().clear();
             }
         });
         file.add(item);        
@@ -41,6 +41,7 @@ public class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Load file
+            	Launcher.getRowEditor().load();
             }
         });
         file.add(item);
@@ -52,6 +53,7 @@ public class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save to file
+            	Launcher.getRowEditor().save();
             }
         });
         file.add(item);
@@ -63,6 +65,7 @@ public class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save as to file
+            	Launcher.getRowEditor().saveAs();
             }
         });
         file.add(item);
@@ -77,6 +80,7 @@ public class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Preview
+            	Launcher.getRowEditor().preview();
             }
         });
         file.add(item);
@@ -88,6 +92,7 @@ public class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Export to file
+            	Launcher.getRowEditor().export();
             }
         });
         file.add(item);
@@ -123,6 +128,7 @@ public class Menu {
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Call new row method
+            	Launcher.getRowEditor().insertRow();
             }
         });
         edit.add(item);
@@ -178,6 +184,8 @@ public class Menu {
         // Add Edit column to menubar
         menubar.add(help);
 
-        frame.setJMenuBar(menubar);
+        Launcher.getFrame().setJMenuBar(menubar);
+        
+        return menubar;
 	}
 }
