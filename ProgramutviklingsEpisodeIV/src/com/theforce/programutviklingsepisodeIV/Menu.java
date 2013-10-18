@@ -20,13 +20,13 @@ public class Menu {
         /*
          *  Column File
          */
-        JMenu file = new JMenu("File");
+        JMenu file = new JMenu(Messages.getString("Menu.filetitle")); //$NON-NLS-1$
         file.setMnemonic(KeyEvent.VK_F);
 
         // New
-        item = new JMenuItem("New", new ImageIcon("images/NEW.GIF"));
+        item = new JMenuItem(Messages.getString("Menu.file.new"), new ImageIcon("images/NEW.GIF")); //$NON-NLS-1$ //$NON-NLS-2$
         item.setMnemonic(KeyEvent.VK_N);
-        item.setToolTipText("Create new file, remove existing data");
+        item.setToolTipText(Messages.getString("Menu.file.new_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Call new method
@@ -35,9 +35,9 @@ public class Menu {
         file.add(item);        
 
         // Load
-        item = new JMenuItem("Load", new ImageIcon("images/OPENDOC.GIF"));
+        item = new JMenuItem(Messages.getString("Menu.file.load"), new ImageIcon("images/OPENDOC.GIF")); //$NON-NLS-1$ //$NON-NLS-2$
         item.setMnemonic(KeyEvent.VK_L);
-        item.setToolTipText("Load a previously saved file");
+        item.setToolTipText(Messages.getString("Menu.file.load_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Load file
@@ -46,9 +46,9 @@ public class Menu {
         file.add(item);
 
         // Save
-        item = new JMenuItem("Save", new ImageIcon("images/SAVE.GIF"));
+        item = new JMenuItem(Messages.getString("Menu.file.save"), new ImageIcon("images/SAVE.GIF")); //$NON-NLS-1$ //$NON-NLS-2$
         item.setMnemonic(KeyEvent.VK_S);
-        item.setToolTipText("Save this layout to a file");
+        item.setToolTipText(Messages.getString("Menu.file.save_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save to file
@@ -57,9 +57,9 @@ public class Menu {
         file.add(item);
 
         // Save as
-        item = new JMenuItem("Save As", new ImageIcon("images/SAVE.GIF"));
+        item = new JMenuItem(Messages.getString("Menu.file.saveas"), new ImageIcon("images/SAVE.GIF")); //$NON-NLS-1$ //$NON-NLS-2$
         item.setMnemonic(KeyEvent.VK_A);
-        item.setToolTipText("Save this layout to a file other than the active one");
+        item.setToolTipText(Messages.getString("Menu.file.saveas_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save as to file
@@ -71,9 +71,9 @@ public class Menu {
         file.addSeparator();
 
         // Preview
-        item = new JMenuItem("Preview", null);
+        item = new JMenuItem(Messages.getString("Menu.file.preview"), null); //$NON-NLS-1$
         item.setMnemonic(KeyEvent.VK_P);
-        item.setToolTipText("Show this layout in a preview window");
+        item.setToolTipText(Messages.getString("Menu.file.preview_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Preview
@@ -82,9 +82,9 @@ public class Menu {
         file.add(item);
         
         // Export
-        item = new JMenuItem("Generate java code", new ImageIcon("images/SAVEJAVA.GIF"));
+        item = new JMenuItem(Messages.getString("Menu.file.export"), new ImageIcon("images/SAVEJAVA.GIF")); //$NON-NLS-1$ //$NON-NLS-2$
         item.setMnemonic(KeyEvent.VK_J);
-        item.setToolTipText("Write java code for this layout to file");
+        item.setToolTipText(Messages.getString("Menu.file.export_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Export to file
@@ -96,9 +96,9 @@ public class Menu {
         file.addSeparator();
         
         // Exit
-        item = new JMenuItem("Exit", null);
+        item = new JMenuItem(Messages.getString("Menu.file.exit"), null); //$NON-NLS-1$
         item.setMnemonic(KeyEvent.VK_E);
-        item.setToolTipText("Terminate the program");
+        item.setToolTipText(Messages.getString("Menu.file.exit_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Exit
@@ -113,13 +113,13 @@ public class Menu {
         /*
          *  Edit
          */
-        JMenu edit = new JMenu("Edit");
+        JMenu edit = new JMenu(Messages.getString("Menu.edittitle")); //$NON-NLS-1$
         edit.setMnemonic(KeyEvent.VK_E);
 
         // New
-        item = new JMenuItem("New row", new ImageIcon("images/NEWROW.GIF"));
+        item = new JMenuItem(Messages.getString("Menu.edit.newrow"), new ImageIcon("images/NEWROW.GIF")); //$NON-NLS-1$ //$NON-NLS-2$
         item.setMnemonic(KeyEvent.VK_N);
-        item.setToolTipText("Add a new row/component to the layout");
+        item.setToolTipText(Messages.getString("Menu.edit.newrow_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Call new row method
@@ -131,9 +131,9 @@ public class Menu {
         edit.addSeparator();
 
         // Preview
-        item = new JMenuItem("Preferences", null);
+        item = new JMenuItem(Messages.getString("Menu.edit.preferences"), null); //$NON-NLS-1$
         item.setMnemonic(KeyEvent.VK_P);
-        item.setToolTipText("Edit personal preferences");
+        item.setToolTipText(Messages.getString("Menu.edit.preferences_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Preferences window
@@ -147,13 +147,13 @@ public class Menu {
         /*
          *  Help
          */
-        JMenu help = new JMenu("Help");
+        JMenu help = new JMenu(Messages.getString("Menu.helptitle")); //$NON-NLS-1$
         help.setMnemonic(KeyEvent.VK_E);
 
         // New
-        item = new JMenuItem("Help", new ImageIcon("images/HELP.GIF"));
+        item = new JMenuItem(Messages.getString("Menu.help.help"), new ImageIcon("images/HELP.GIF")); //$NON-NLS-1$ //$NON-NLS-2$
         item.setMnemonic(KeyEvent.VK_H);
-        item.setToolTipText("Overview of how the program works");
+        item.setToolTipText(Messages.getString("Menu.help.help_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Show help frame
@@ -165,9 +165,9 @@ public class Menu {
         help.addSeparator();
 
         // Preview
-        item = new JMenuItem("About", null);
+        item = new JMenuItem(Messages.getString("Menu.help.about"), null); //$NON-NLS-1$
         item.setMnemonic(KeyEvent.VK_A);
-        item.setToolTipText("Show information about the program");
+        item.setToolTipText(Messages.getString("Menu.help.about_tooltip")); //$NON-NLS-1$
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Create About window

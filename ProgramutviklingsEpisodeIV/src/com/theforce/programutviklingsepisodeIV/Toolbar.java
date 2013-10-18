@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 public class Toolbar {
-	public Toolbar(JFrame frame) {
+	public Toolbar(JPanel panel) {
 		// Create toolbar
 		JToolBar toolbar = new JToolBar();
 		
@@ -18,7 +18,8 @@ public class Toolbar {
 		JButton button;
 		
 		// New
-        button = new JButton(new ImageIcon("images/NEW.GIF"));
+        button = new JButton(new ImageIcon("images/NEW.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Menu.file.new_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // New
@@ -27,19 +28,23 @@ public class Toolbar {
         toolbar.add(button);
 		
 		// Load
-        button = new JButton(new ImageIcon("images/OPENDOC.GIF"));
+        button = new JButton(new ImageIcon("images/OPENDOC.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Menu.file.load_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Load
+            	Launcher.getRowEditor().load();
             }
         });
         toolbar.add(button);
 		
 		// Save
-        button = new JButton(new ImageIcon("images/SAVE.GIF"));
+        button = new JButton(new ImageIcon("images/SAVE.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Menu.file.save_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Save
+            	Launcher.getRowEditor().save();
             }
         });
         toolbar.add(button);
@@ -48,19 +53,23 @@ public class Toolbar {
         toolbar.addSeparator();
 		
 		// Preview
-        button = new JButton(new ImageIcon("images/ExecuteProject.GIF"));
+        button = new JButton(new ImageIcon("images/ExecuteProject.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Menu.file.preview_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Preview
+            	Launcher.getRowEditor().preview();
             }
         });
         toolbar.add(button);
 		
 		// Export
-        button = new JButton(new ImageIcon("images/SAVEJAVA.GIF"));
+        button = new JButton(new ImageIcon("images/SAVEJAVA.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Menu.file.export_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                // Preview
+                // Export
+            	Launcher.getRowEditor().export();
             }
         });
         toolbar.add(button);
@@ -69,28 +78,33 @@ public class Toolbar {
         toolbar.addSeparator();
 		
 		// New row
-        button = new JButton(new ImageIcon("images/NEWROW.GIF"));
+        button = new JButton(new ImageIcon("images/NEWROW.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Menu.edit.newrow_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                // New row
+                Launcher.getRowEditor().insertRow();
             }
         });
         toolbar.add(button);
 		
 		// Row up
-        button = new JButton(new ImageIcon("images/MoveRowUp.GIF"));
+        button = new JButton(new ImageIcon("images/MoveRowUp.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Toolbar.move.row.up")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Move row up
+            	Launcher.getRowEditor().moveRowUp();
             }
         });
         toolbar.add(button);
 		
 		// Row down
-        button = new JButton(new ImageIcon("images/MoveRowDown.GIF"));
+        button = new JButton(new ImageIcon("images/MoveRowDown.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Toolbar.move.row.down")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Move row down
+            	Launcher.getRowEditor().moveRowDown();
             }
         });
         toolbar.add(button);
@@ -99,7 +113,8 @@ public class Toolbar {
         toolbar.addSeparator();
 		
 		// Help
-        button = new JButton(new ImageIcon("images/HELP.GIF"));
+        button = new JButton(new ImageIcon("images/HELP.GIF")); //$NON-NLS-1$
+        button.setToolTipText(Messages.getString("Menu.help.help_tooltip")); //$NON-NLS-1$
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Help
@@ -107,6 +122,6 @@ public class Toolbar {
         });
         toolbar.add(button);
 		
-		frame.add(toolbar, BorderLayout.NORTH);
+		Launcher.getFrame().add(toolbar, BorderLayout.NORTH);
 	}
 }
